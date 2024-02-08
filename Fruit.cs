@@ -11,6 +11,7 @@ namespace FruitMarket
         public string Name {  get; set; }
         public bool IsSweet {  get; set; }
         public double Price { get; set; }
+        public double UsdPrice => Price / UsdCourse.Current;
 
         public static Fruit Create()
         {
@@ -27,7 +28,7 @@ namespace FruitMarket
 
         public override string ToString()
         {
-            return "Fruit: Name=" + Name + ", IsSweet=" + IsSweet + ", Price=" + Price.ToString("C2");
+            return "Fruit: Name=" + Name + ", IsSweet=" + IsSweet + ", Price (PLN)=" + Price.ToString("C2") + ", Price (USD)=" + MyFormatter.FormatUsdPrice(UsdPrice);
         }
     }
 }
